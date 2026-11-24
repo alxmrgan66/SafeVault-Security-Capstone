@@ -1,0 +1,21 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Sign in";
+}
+<section class="panel form-panel" aria-labelledby="login-heading">
+    <h2 id="login-heading">Sign in</h2>
+    @if (Model.Registered)
+    {
+        <p class="status" role="status">Account created. You can sign in now.</p>
+    }
+    <form method="post" asp-page="/Login">
+        <div asp-validation-summary="ModelOnly" class="validation" role="alert"></div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" autocomplete="username" maxlength="32" required />
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" autocomplete="current-password" maxlength="72" required />
+        <button type="submit">Sign in</button>
+    </form>
+    <p class="hint"><a asp-page="/Register">Create an account</a></p>
+</section>

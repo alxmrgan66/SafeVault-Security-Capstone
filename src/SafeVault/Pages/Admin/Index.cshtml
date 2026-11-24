@@ -1,0 +1,36 @@
+@page
+@model SafeVault.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Accounts";
+}
+<section class="panel" aria-labelledby="accounts-heading">
+    <h2 id="accounts-heading">Accounts</h2>
+    <form class="search" method="get" asp-page="/Admin/Index">
+        <label asp-for="Name">Display name</label>
+        <input asp-for="Name" type="search" maxlength="80" />
+        <button type="submit" class="secondary">Search</button>
+    </form>
+    <div asp-validation-summary="ModelOnly" class="validation" role="alert"></div>
+    @if (Model.Accounts.Count == 0)
+    {
+        <p class="hint">No accounts found.</p>
+    }
+    else
+    {
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr><th scope="col">Name</th><th scope="col">Username</th><th scope="col">Email</th><th scope="col">Role</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var account in Model.Accounts)
+                    {
+                        <tr>
+                            <td>@account.DisplayName</td><td>@account.Username</td><td>@account.Email</td><td>@account.Role</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>

@@ -1,0 +1,14 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Your account";
+}
+<section class="panel" aria-labelledby="account-heading">
+    <h2 id="account-heading">Your account</h2>
+    <dl class="profile-details">
+        <div><dt>Display name</dt><dd>@User.FindFirstValue("safevault_display_name")</dd></div>
+        <div><dt>Username</dt><dd>@User.Identity?.Name</dd></div>
+        <div><dt>Email</dt><dd>@User.FindFirstValue(ClaimTypes.Email)</dd></div>
+        <div><dt>Role</dt><dd>@User.FindFirstValue(ClaimTypes.Role)</dd></div>
+    </dl>
+</section>

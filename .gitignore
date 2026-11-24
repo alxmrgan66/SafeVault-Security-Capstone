@@ -1,0 +1,11 @@
+bin/
+obj/
+data/
+TestResults/
+*.sqlite
+*.sqlite-journal
+*.sqlite-shm
+*.sqlite-wal
+.env
+.env.*
+.vs/

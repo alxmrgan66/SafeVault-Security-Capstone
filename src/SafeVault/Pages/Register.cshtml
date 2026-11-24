@@ -1,0 +1,23 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Create an account";
+}
+<section class="panel form-panel" aria-labelledby="register-heading">
+    <h2 id="register-heading">Create an account</h2>
+    <form method="post" asp-page="/Register">
+        <div asp-validation-summary="ModelOnly" class="validation" role="alert"></div>
+        <label asp-for="DisplayName">Display name</label>
+        <input asp-for="DisplayName" autocomplete="nickname" maxlength="80" required />
+        <label asp-for="Username"></label>
+        <input asp-for="Username" autocomplete="username" minlength="3" maxlength="32" required />
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" autocomplete="email" maxlength="100" required />
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" autocomplete="new-password" minlength="12" maxlength="72"
+               aria-describedby="password-help" required />
+        <p id="password-help" class="hint">Use at least 12 characters and at most 72 UTF-8 bytes.</p>
+        <button type="submit">Create account</button>
+    </form>
+    <p class="hint">Already have an account? <a asp-page="/Login">Sign in</a></p>
+</section>
